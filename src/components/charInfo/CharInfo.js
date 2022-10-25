@@ -4,7 +4,7 @@ import ErorrMessage from '../errorMessage/errorMessage';
 import Skeleton from '../skeleton/Skeleton';
 import './charInfo.scss';
 import MarvelService from '../../services/MarvelService';
-
+import PropTypes from 'prop-types';
 
 class CharInfo extends Component {
     state = {
@@ -23,13 +23,6 @@ class CharInfo extends Component {
         if (this.props.charId !== prevProps.charId){
             this.updateChar();
         }
-    }
-
-    componentDidCatch(err, info) {
-        console.log(err, info);
-        this.setState({
-            error: true
-        });
     }
 
     updateChar = () => {
@@ -130,6 +123,10 @@ const View = ({char}) => {
                 </ul>
         </>
     )
+}
+
+CharInfo.propTypes = {
+    charId: PropTypes.string
 }
 
 export default CharInfo;
